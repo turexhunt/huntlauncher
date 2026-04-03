@@ -1,0 +1,10 @@
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\HuntLoader.exe
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\HuntLoader.dll
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\HuntLoader.deps.json
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\HuntLoader.runtimeconfig.json
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\HuntLoader.pdb
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\CommunityToolkit.Mvvm.dll
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\DiscordRPC.dll
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\Microsoft.Identity.Client.dll
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\publish\Newtonsoft.Json.dll

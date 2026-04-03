@@ -1,0 +1,712 @@
+<!-- src/HuntLoader/Views/Pages/ProfilesPage.xaml -->
+<UserControl x:Class="HuntLoader.Views.Pages.ProfilesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,24">
+            <TextBlock Text="Профили"
+                       Foreground="#F0F0FF"
+                       FontSize="26" FontWeight="Black"/>
+            <TextBlock Text="Управляй игровыми профилями и версиями"
+                       Foreground="#9090BB"
+                       FontSize="13" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <!-- Контент -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Список профилей -->
+            <Border Grid.Column="0" Margin="0,0,16,0"
+                    Background="#16162A" CornerRadius="14"
+                    BorderBrush="#2A2A4A" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Padding="20,16"
+                            BorderBrush="#2A2A4A"
+                            BorderThickness="0,0,0,1">
+                        <TextBlock Foreground="#9090BB" FontSize="12">
+                            <Run Text="Профилей: "/>
+                            <Run Text="{Binding Profiles.Count}"/>
+                        </TextBlock>
+                    </Border>
+
+                    <ScrollViewer Grid.Row="1" Padding="12"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Profiles}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10"
+                                            Padding="16,14"
+                                            Margin="0,0,0,6"
+                                            Cursor="Hand"
+                                            MouseLeftButtonDown="Profile_Click">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background" Value="#1C1C35"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#222248"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="8"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border Grid.Column="0" CornerRadius="4"
+                                                    Margin="0,0,14,0">
+                                                <Border.Background>
+                                                    <SolidColorBrush Color="{Binding Color}"/>
+                                                </Border.Background>
+                                            </Border>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}"
+                                                           Foreground="White"
+                                                           FontSize="15" FontWeight="Bold"/>
+                                                <StackPanel Orientation="Horizontal" Margin="0,4,0,2">
+                                                    <Border Background="#20FFFFFF"
+                                                            CornerRadius="4" Padding="6,2">
+                                                        <TextBlock Text="{Binding GameVersion}"
+                                                                   Foreground="#8B6FD4"
+                                                                   FontSize="11" FontWeight="SemiBold"/>
+                                                    </Border>
+                                                    <Border Background="#20FFFFFF"
+                                                            CornerRadius="4" Padding="6,2"
+                                                            Margin="6,0,0,0">
+                                                        <TextBlock Text="{Binding ModLoader}"
+                                                                   Foreground="#6B9FFF"
+                                                                   FontSize="11"/>
+                                                    </Border>
+                                                </StackPanel>
+                                                <TextBlock Foreground="#555580" FontSize="10">
+                                                    <Run Text="Наиграно: "/>
+                                                    <Run Text="{Binding PlayTimeFormatted}"/>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <!-- Правая панель -->
+            <ScrollViewer Grid.Column="1"
+                          VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <!-- Создать -->
+                    <Border Background="#1E1E35" CornerRadius="14"
+                            Padding="20" Margin="0,0,0,12"
+                            BorderBrush="#2A2A4A" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="➕ Новый профиль"
+                                       Foreground="#F0F0FF"
+                                       FontSize="15" FontWeight="SemiBold"
+                                       Margin="0,0,0,16"/>
+
+                            <!-- Название -->
+                            <TextBlock Text="Название"
+                                       Foreground="#9090BB" FontSize="11"
+                                       Margin="0,0,0,4"/>
+                            <TextBox Background="#0F0F20"
+                                     Foreground="#F0F0FF"
+                                     CaretBrush="#8B6FD4"
+                                     BorderBrush="#2A2A4A"
+                                     BorderThickness="1"
+                                     Padding="10,8" FontSize="13"
+                                     Margin="0,0,0,10"
+                                     Text="{Binding NewName,
+                                         UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <Border CornerRadius="8"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Padding="{TemplateBinding Padding}">
+                                            <ScrollViewer x:Name="PART_ContentHost"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+
+                            <!-- Версия -->
+                            <TextBlock Text="Версия Minecraft"
+                                       Foreground="#9090BB" FontSize="11"
+                                       Margin="0,0,0,4"/>
+                            <ComboBox Margin="0,0,0,10"
+                                      ItemsSource="{Binding AvailableVersions}"
+                                      SelectedItem="{Binding NewVersion}">
+                                <ComboBox.Template>
+                                    <ControlTemplate TargetType="ComboBox">
+                                        <Grid>
+                                            <Border x:Name="bd" CornerRadius="8"
+                                                    Background="#0F0F20"
+                                                    BorderBrush="#2A2A4A"
+                                                    BorderThickness="1" Height="40">
+                                                <Grid>
+                                                    <ContentPresenter
+                                                        Content="{TemplateBinding SelectionBoxItem}"
+                                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                        Margin="10,0,30,0"
+                                                        VerticalAlignment="Center">
+                                                        <ContentPresenter.Resources>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Foreground" Value="#F0F0FF"/>
+                                                                <Setter Property="FontSize"   Value="13"/>
+                                                            </Style>
+                                                        </ContentPresenter.Resources>
+                                                    </ContentPresenter>
+                                                    <Path HorizontalAlignment="Right"
+                                                          VerticalAlignment="Center"
+                                                          Margin="0,0,10,0"
+                                                          Data="M0,0 L4,4 L8,0"
+                                                          Stroke="#9090BB"
+                                                          StrokeThickness="1.5"
+                                                          Fill="Transparent"/>
+                                                    <ToggleButton
+                                                        IsChecked="{Binding IsDropDownOpen,
+                                                            Mode=TwoWay,
+                                                            RelativeSource={RelativeSource TemplatedParent}}"
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        Focusable="False"/>
+                                                </Grid>
+                                            </Border>
+                                            <Popup IsOpen="{TemplateBinding IsDropDownOpen}"
+                                                   AllowsTransparency="True"
+                                                   Focusable="False"
+                                                   PopupAnimation="Slide"
+                                                   Placement="Bottom">
+                                                <Border Background="#1C1C35"
+                                                        BorderBrush="#2A2A4A"
+                                                        BorderThickness="1"
+                                                        CornerRadius="8"
+                                                        MaxHeight="200"
+                                                        MinWidth="{Binding ActualWidth,
+                                                            RelativeSource={RelativeSource TemplatedParent}}">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect Color="#000000"
+                                                                          BlurRadius="20"
+                                                                          ShadowDepth="4"
+                                                                          Opacity="0.5"/>
+                                                    </Border.Effect>
+                                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                                        <ItemsPresenter/>
+                                                    </ScrollViewer>
+                                                </Border>
+                                            </Popup>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="BorderBrush" Value="#8B6FD4"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ComboBox.Template>
+                                <ComboBox.ItemContainerStyle>
+                                    <Style TargetType="ComboBoxItem">
+                                        <Setter Property="Background" Value="#1C1C35"/>
+                                        <Setter Property="Foreground" Value="#F0F0FF"/>
+                                        <Setter Property="Padding"    Value="10,8"/>
+                                        <Setter Property="FontSize"   Value="13"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ComboBoxItem">
+                                                    <Border x:Name="bd"
+                                                            Background="{TemplateBinding Background}"
+                                                            Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="bd" Property="Background" Value="#2A2A5A"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter TargetName="bd" Property="Background" Value="#3A2A6A"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ComboBox.ItemContainerStyle>
+                            </ComboBox>
+
+                            <!-- Мод-лоадер -->
+                            <TextBlock Text="Мод-лоадер"
+                                       Foreground="#9090BB" FontSize="11"
+                                       Margin="0,0,0,4"/>
+                            <ComboBox Margin="0,0,0,10"
+                                      ItemsSource="{Binding ModLoaders}"
+                                      SelectedItem="{Binding NewLoader}">
+                                <ComboBox.Template>
+                                    <ControlTemplate TargetType="ComboBox">
+                                        <Grid>
+                                            <Border x:Name="bd" CornerRadius="8"
+                                                    Background="#0F0F20"
+                                                    BorderBrush="#2A2A4A"
+                                                    BorderThickness="1" Height="40">
+                                                <Grid>
+                                                    <ContentPresenter
+                                                        Content="{TemplateBinding SelectionBoxItem}"
+                                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                        Margin="10,0,30,0"
+                                                        VerticalAlignment="Center">
+                                                        <ContentPresenter.Resources>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Foreground" Value="#F0F0FF"/>
+                                                                <Setter Property="FontSize"   Value="13"/>
+                                                            </Style>
+                                                        </ContentPresenter.Resources>
+                                                    </ContentPresenter>
+                                                    <Path HorizontalAlignment="Right"
+                                                          VerticalAlignment="Center"
+                                                          Margin="0,0,10,0"
+                                                          Data="M0,0 L4,4 L8,0"
+                                                          Stroke="#9090BB"
+                                                          StrokeThickness="1.5"
+                                                          Fill="Transparent"/>
+                                                    <ToggleButton
+                                                        IsChecked="{Binding IsDropDownOpen,
+                                                            Mode=TwoWay,
+                                                            RelativeSource={RelativeSource TemplatedParent}}"
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        Focusable="False"/>
+                                                </Grid>
+                                            </Border>
+                                            <Popup IsOpen="{TemplateBinding IsDropDownOpen}"
+                                                   AllowsTransparency="True"
+                                                   Focusable="False"
+                                                   PopupAnimation="Slide"
+                                                   Placement="Bottom">
+                                                <Border Background="#1C1C35"
+                                                        BorderBrush="#2A2A4A"
+                                                        BorderThickness="1"
+                                                        CornerRadius="8"
+                                                        MinWidth="{Binding ActualWidth,
+                                                            RelativeSource={RelativeSource TemplatedParent}}">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect Color="#000000"
+                                                                          BlurRadius="20"
+                                                                          ShadowDepth="4"
+                                                                          Opacity="0.5"/>
+                                                    </Border.Effect>
+                                                    <ItemsPresenter/>
+                                                </Border>
+                                            </Popup>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="BorderBrush" Value="#8B6FD4"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ComboBox.Template>
+                                <ComboBox.ItemContainerStyle>
+                                    <Style TargetType="ComboBoxItem">
+                                        <Setter Property="Background" Value="#1C1C35"/>
+                                        <Setter Property="Foreground" Value="#F0F0FF"/>
+                                        <Setter Property="Padding"    Value="10,8"/>
+                                        <Setter Property="FontSize"   Value="13"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ComboBoxItem">
+                                                    <Border x:Name="bd"
+                                                            Background="{TemplateBinding Background}"
+                                                            Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="bd" Property="Background" Value="#2A2A5A"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter TargetName="bd" Property="Background" Value="#3A2A6A"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ComboBox.ItemContainerStyle>
+                            </ComboBox>
+
+                            <!-- Версия лоадера -->
+                            <TextBlock Text="Версия лоадера (пусто = авто)"
+                                       Foreground="#9090BB" FontSize="11"
+                                       Margin="0,0,0,4"/>
+                            <TextBox Background="#0F0F20"
+                                     Foreground="#F0F0FF"
+                                     CaretBrush="#8B6FD4"
+                                     BorderBrush="#2A2A4A"
+                                     BorderThickness="1"
+                                     Padding="10,8" FontSize="13"
+                                     Margin="0,0,0,10"
+                                     Text="{Binding NewLoaderVersion,
+                                         UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <Border CornerRadius="8"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Padding="{TemplateBinding Padding}">
+                                            <ScrollViewer x:Name="PART_ContentHost"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+
+                            <!-- RAM -->
+                            <TextBlock Text="{Binding NewMemLabel}"
+                                       Foreground="#9090BB" FontSize="11"
+                                       Margin="0,0,0,8"/>
+
+                            <Grid Margin="0,0,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="36"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Min"
+                                           Foreground="#555580" FontSize="11"
+                                           VerticalAlignment="Center"/>
+                                <Slider Grid.Column="1"
+                                        Minimum="256" Maximum="8192"
+                                        Value="{Binding NewMemMin}"
+                                        TickFrequency="256"
+                                        IsSnapToTickEnabled="True"
+                                        Foreground="#8B6FD4"
+                                        VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2"
+                                           Foreground="#9090BB" FontSize="11"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right">
+                                    <TextBlock.Text>
+                                        <Binding Path="NewMemMin" StringFormat="{}{0} MB"/>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,14">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="36"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Max"
+                                           Foreground="#555580" FontSize="11"
+                                           VerticalAlignment="Center"/>
+                                <Slider Grid.Column="1"
+                                        Minimum="512" Maximum="32768"
+                                        Value="{Binding NewMemMax}"
+                                        TickFrequency="512"
+                                        IsSnapToTickEnabled="True"
+                                        Foreground="#8B6FD4"
+                                        VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2"
+                                           Foreground="#9090BB" FontSize="11"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right">
+                                    <TextBlock.Text>
+                                        <Binding Path="NewMemMax" StringFormat="{}{0} MB"/>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Grid>
+
+                            <!-- ✅ Чекбокс оптимизации -->
+                            <Border Background="#0A1A0A" CornerRadius="10"
+                                    BorderBrush="#1B3020" BorderThickness="1"
+                                    Padding="12,10" Margin="0,0,0,14">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsLoaderSelected}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <StackPanel>
+                                    <CheckBox IsChecked="{Binding InstallOptimizations}"
+                                              Foreground="#E0E0FF"
+                                              FontSize="12" FontWeight="SemiBold"
+                                              Margin="0,0,0,4">
+                                        <TextBlock Text="⚡ Установить оптимизирующие моды"
+                                                   Foreground="#E0E0FF" FontSize="12"/>
+                                    </CheckBox>
+                                    <TextBlock Foreground="#555580" FontSize="10"
+                                               Margin="20,0,0,0" TextWrapping="Wrap">
+                                        Sodium, Lithium, Zoom, Minimap и другие.
+                                        Можно удалить в любой момент.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Прогресс установки -->
+                            <Border x:Name="OptProgressPanel"
+                                    Visibility="{Binding IsOptimizing, Converter={StaticResource BoolToVis}}"
+                                    Margin="0,0,0,10">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding OptStatusText}"
+                                               Foreground="#1BD96A" FontSize="11"
+                                               Margin="0,0,0,6" TextWrapping="Wrap"/>
+                                    <Border Background="#080818" CornerRadius="4"
+                                            Height="6" ClipToBounds="True">
+                                        <Border Background="#1BD96A" CornerRadius="4"
+                                                HorizontalAlignment="Left">
+                                            <Border.Width>
+                                                <Binding Path="OptProgress"
+                                                         Converter="{StaticResource PercentToWidth}"
+                                                         ConverterParameter="260"/>
+                                            </Border.Width>
+                                        </Border>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Кнопка создать -->
+                            <Button Cursor="Hand"
+                                    Command="{Binding CreateCommand}"
+                                    IsEnabled="{Binding IsOptimizing,
+                                               Converter={StaticResource InverseBool}}"
+                                    HorizontalAlignment="Stretch">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="bd" CornerRadius="10"
+                                                Padding="14,11">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#8B6FD4" Offset="0"/>
+                                                    <GradientStop Color="#6B9FFF" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.9"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.5"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="✅ Создать профиль"
+                                           Foreground="White"
+                                           FontSize="13" FontWeight="SemiBold"/>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Действия -->
+                    <Border Background="#1E1E35" CornerRadius="14"
+                            Padding="20" Margin="0,0,0,12"
+                            BorderBrush="#2A2A4A" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="Действия"
+                                       Foreground="#F0F0FF"
+                                       FontSize="15" FontWeight="SemiBold"
+                                       Margin="0,0,0,4"/>
+                            <TextBlock Text="{Binding Selected.Name,
+                                           FallbackValue='Выбери профиль слева'}"
+                                       Foreground="#555580" FontSize="11"
+                                       Margin="0,0,0,12"/>
+
+                            <!-- Сделать активным -->
+                            <Button Cursor="Hand"
+                                    Command="{Binding SetActiveCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    IsEnabled="{Binding HasSelection}"
+                                    Margin="0,0,0,6">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="bd" CornerRadius="10" Padding="12,9">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#8B6FD4" Offset="0"/>
+                                                    <GradientStop Color="#6B9FFF" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.35"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="✅ Сделать активным"
+                                           Foreground="White" FontSize="13"/>
+                            </Button>
+
+                            <!-- ✅ Оптимизировать существующий -->
+                            <Button Cursor="Hand"
+                                    Command="{Binding OptimizeCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    IsEnabled="{Binding CanOptimize}"
+                                    Margin="0,0,0,6">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="bd" CornerRadius="10"
+                                                Background="#0A1A0A"
+                                                BorderBrush="#1BD96A"
+                                                BorderThickness="1"
+                                                Padding="12,9">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="Background" Value="#0E2A0E"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.35"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="⚡ Оптимизировать"
+                                           Foreground="#1BD96A" FontSize="13"/>
+                            </Button>
+
+                            <!-- Дублировать -->
+                            <Button Cursor="Hand"
+                                    Command="{Binding DuplicateCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    IsEnabled="{Binding HasSelection}"
+                                    Margin="0,0,0,6">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="bd" CornerRadius="10"
+                                                Background="#1C1C35"
+                                                BorderBrush="#2A2A4A"
+                                                BorderThickness="1"
+                                                Padding="12,9">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="Background" Value="#2A2A4A"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.35"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="📋 Дублировать"
+                                           Foreground="#F0F0FF" FontSize="13"/>
+                            </Button>
+
+                            <!-- Открыть папку -->
+                            <Button Cursor="Hand"
+                                    Command="{Binding OpenFolderCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    IsEnabled="{Binding HasSelection}"
+                                    Margin="0,0,0,6">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="bd" CornerRadius="10"
+                                                Background="#1C1C35"
+                                                BorderBrush="#2A2A4A"
+                                                BorderThickness="1"
+                                                Padding="12,9">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="Background" Value="#2A2A4A"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.35"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="📂 Открыть папку"
+                                           Foreground="#F0F0FF" FontSize="13"/>
+                            </Button>
+
+                            <!-- Удалить -->
+                            <Button Cursor="Hand"
+                                    Command="{Binding DeleteCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    IsEnabled="{Binding HasSelection}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="bd" CornerRadius="10"
+                                                Background="#2A0A0A"
+                                                BorderBrush="#E86060"
+                                                BorderThickness="1"
+                                                Padding="12,9">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="bd" Property="Background" Value="#3A1010"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bd" Property="Opacity" Value="0.35"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="🗑 Удалить профиль"
+                                           Foreground="#E86060" FontSize="13"/>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Статус -->
+                    <Border Background="#16162A" CornerRadius="10"
+                            Padding="16,10">
+                        <TextBlock Text="{Binding StatusText}"
+                                   Foreground="#8B6FD4"
+                                   FontSize="12" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

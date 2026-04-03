@@ -1,0 +1,65 @@
+<!-- src/HuntLoader/Views/Dialogs/AddAccountDialog.xaml -->
+<Window x:Class="HuntLoader.Views.Dialogs.AddAccountDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавить аккаунт"
+        Width="400" Height="300"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Border Background="{StaticResource SurfaceBrush}"
+            CornerRadius="12"
+            BorderBrush="{StaticResource AccentBrush}"
+            BorderThickness="1">
+        <StackPanel Margin="24">
+
+            <!-- Шапка -->
+            <Grid Margin="0,0,0,20">
+                <TextBlock Text="➕ Добавить аккаунт"
+                           Style="{StaticResource TitleStyle}" FontSize="18"/>
+                <Button Content="✕" HorizontalAlignment="Right"
+                        Style="{StaticResource WinBtnCloseStyle}"
+                        Click="CloseClick"/>
+            </Grid>
+
+            <!-- Тип -->
+            <TextBlock Text="Тип аккаунта" Style="{StaticResource LabelStyle}"/>
+            <ComboBox Style="{StaticResource DarkComboStyle}"
+                      x:Name="TypeCombo"
+                      SelectedIndex="0"
+                      Margin="0,0,0,12"
+                      SelectionChanged="TypeCombo_SelectionChanged">
+                <ComboBoxItem Content="🎮 Offline (без лицензии)"/>
+                <ComboBoxItem Content="⭐ Microsoft (с лицензией)"/>
+            </ComboBox>
+
+            <!-- Offline -->
+            <StackPanel x:Name="OfflinePanel">
+                <TextBlock Text="Никнейм" Style="{StaticResource LabelStyle}"/>
+                <TextBox x:Name="UsernameBox"
+                         Style="{StaticResource DarkTextBoxStyle}"
+                         Margin="0,0,0,16"/>
+                <Button Style="{StaticResource PrimaryBtnStyle}"
+                        Content="✅ Добавить"
+                        Click="AddOfflineClick"/>
+            </StackPanel>
+
+            <!-- Microsoft -->
+            <StackPanel x:Name="MicrosoftPanel" Visibility="Collapsed">
+                <TextBlock Text="Откроется браузер для входа в Microsoft"
+                           Style="{StaticResource LabelStyle}"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,16"/>
+                <Button Style="{StaticResource PrimaryBtnStyle}"
+                        Content="🔑 Войти через Microsoft"
+                        Click="AddMicrosoftClick"/>
+            </StackPanel>
+
+            <TextBlock x:Name="StatusText" Foreground="{StaticResource AccentBrush}"
+                       FontSize="12" Margin="0,12,0,0"/>
+        </StackPanel>
+    </Border>
+</Window>

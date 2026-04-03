@@ -1,0 +1,2 @@
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\win-x64\publish\HuntLoader.pdb
+C:\Users\seliv\Desktop\HuntLoader\src\HuntLoader\bin\Release\net8.0-windows\win-x64\publish\HuntLoader.exe

@@ -1,0 +1,122 @@
+<!-- src/HuntLoader/Views/Dialogs/CreateProfileDialog.xaml -->
+<Window x:Class="HuntLoader.Views.Dialogs.CreateProfileDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Новый профиль"
+        Width="440" Height="480"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Border Background="{StaticResource SurfaceBrush}"
+            CornerRadius="12"
+            BorderBrush="{StaticResource AccentBrush}"
+            BorderThickness="1">
+        <StackPanel Margin="24">
+
+            <!-- Заголовок -->
+            <Grid Margin="0,0,0,20">
+                <TextBlock Text="📁 Новый профиль"
+                           Style="{StaticResource TitleStyle}"
+                           FontSize="18"/>
+                <Button Content="✕"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource WinBtnCloseStyle}"
+                        Click="CloseClick"/>
+            </Grid>
+
+            <!-- Название -->
+            <TextBlock Text="Название" Style="{StaticResource LabelStyle}"/>
+            <TextBox x:Name="NameBox"
+                     Style="{StaticResource DarkTextBoxStyle}"
+                     Margin="0,0,0,10"/>
+
+            <!-- Версия -->
+            <TextBlock Text="Версия Minecraft" Style="{StaticResource LabelStyle}"/>
+            <ComboBox x:Name="VersionCombo"
+                      Style="{StaticResource DarkComboStyle}"
+                      Margin="0,0,0,10"/>
+
+            <!-- Лоадер -->
+            <TextBlock Text="Мод-лоадер" Style="{StaticResource LabelStyle}"/>
+            <ComboBox x:Name="LoaderCombo"
+                      Style="{StaticResource DarkComboStyle}"
+                      Margin="0,0,0,10"
+                      SelectionChanged="LoaderCombo_SelectionChanged">
+                <ComboBoxItem Content="Vanilla"/>
+                <ComboBoxItem Content="Fabric"/>
+                <ComboBoxItem Content="Forge"/>
+                <ComboBoxItem Content="Quilt"/>
+                <ComboBoxItem Content="NeoForge"/>
+            </ComboBox>
+
+            <!-- RAM -->
+            <TextBlock Text="RAM (MB)" Style="{StaticResource LabelStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
+                <TextBox x:Name="MemMinBox"
+                         Style="{StaticResource DarkTextBoxStyle}"
+                         Text="512" Width="80" Margin="0,0,8,0"/>
+                <TextBlock Text="—" Foreground="#888"
+                           VerticalAlignment="Center" Margin="0,0,8,0"/>
+                <TextBox x:Name="MemMaxBox"
+                         Style="{StaticResource DarkTextBoxStyle}"
+                         Text="2048" Width="80"/>
+            </StackPanel>
+
+            <!-- ✅ Чекбокс оптимизации -->
+            <Border x:Name="OptimizationPanel"
+                    Background="#0E1A10" CornerRadius="10"
+                    BorderBrush="#1B3020" BorderThickness="1"
+                    Padding="14,12" Margin="0,0,0,16"
+                    Visibility="Collapsed">
+                <StackPanel>
+                    <CheckBox x:Name="OptimizeCheck"
+                              IsChecked="True"
+                              Foreground="#E0E0FF"
+                              FontSize="13"
+                              FontWeight="SemiBold"
+                              Margin="0,0,0,6">
+                        <TextBlock Text="⚡ Установить оптимизирующие моды"
+                                   Foreground="#E0E0FF" FontSize="13"/>
+                    </CheckBox>
+                    <TextBlock Foreground="#555580" FontSize="11"
+                               Margin="20,0,0,0"
+                               TextWrapping="Wrap">
+                        Sodium, Lithium, FerriteCore, Zoom, Minimap и другие.
+                        Моды можно удалить в любой момент.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <!-- Кнопка создать -->
+            <Button Style="{StaticResource PrimaryBtnStyle}"
+                    Content="✅ Создать профиль"
+                    Click="CreateClick"/>
+
+            <!-- Статус -->
+            <TextBlock x:Name="StatusText"
+                       Foreground="{StaticResource AccentBrush}"
+                       FontSize="12" Margin="0,10,0,0"
+                       TextWrapping="Wrap"/>
+
+            <!-- Прогресс установки модов -->
+            <Border x:Name="ProgressPanel"
+                    Visibility="Collapsed"
+                    Margin="0,8,0,0">
+                <StackPanel>
+                    <Border Background="#080818" CornerRadius="4"
+                            Height="6" ClipToBounds="True">
+                        <Border x:Name="ProgressFill"
+                                Background="#1BD96A"
+                                CornerRadius="4"
+                                HorizontalAlignment="Left"
+                                Width="0"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Border>
+</Window>

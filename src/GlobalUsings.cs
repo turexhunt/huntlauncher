@@ -1,0 +1,24 @@
+// src/HuntLoader/GlobalUsings.cs
+global using System;
+global using System.Collections.Generic;
+global using System.IO;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using System.Net.Http;
+global using System.Text;
+global using System.Windows;
+global using System.Globalization;
+global using System.ComponentModel;
+global using System.Runtime.CompilerServices;
+global using System.Collections.ObjectModel;
+global using System.Diagnostics;
+global using System.Windows.Data;
+global using System.Windows.Media;
+global using System.Windows.Input;
+global using HuntLoader.Core;
+global using HuntLoader.Models;
+global using HuntLoader.Services;
+global using HuntLoader.ViewModels;
+global using Newtonsoft.Json;
+global using Newtonsoft.Json.Linq;

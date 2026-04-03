@@ -1,0 +1,36 @@
+<!-- src/HuntLoader/Controls/ProgressButton.xaml -->
+<UserControl x:Class="HuntLoader.Controls.ProgressButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root">
+
+    <Button Command="{Binding ElementName=Root, Path=Command}"
+            IsEnabled="{Binding ElementName=Root, Path=IsEnabled}"
+            Style="{StaticResource PlayBtnStyle}">
+        <Grid Width="200">
+            <TextBlock Text="{Binding ElementName=Root, Path=Text}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Visibility="{Binding ElementName=Root,
+                           Path=IsLoading,
+                           Converter={StaticResource InverseBoolToVis}}"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Visibility="{Binding ElementName=Root,
+                            Path=IsLoading,
+                            Converter={StaticResource BoolToVis}}">
+                <TextBlock Text="⏳ " FontSize="14"/>
+                <TextBlock Text="{Binding ElementName=Root, Path=LoadingText}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            <ProgressBar Value="{Binding ElementName=Root, Path=Progress}"
+                         Maximum="100" Height="3"
+                         VerticalAlignment="Bottom"
+                         Background="Transparent"
+                         Foreground="White"
+                         Visibility="{Binding ElementName=Root,
+                             Path=IsLoading,
+                             Converter={StaticResource BoolToVis}}"/>
+        </Grid>
+    </Button>
+</UserControl>

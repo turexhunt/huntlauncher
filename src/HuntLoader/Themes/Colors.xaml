@@ -1,0 +1,196 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ═══ Базовые цвета ═══ -->
+    <SolidColorBrush x:Key="BackgroundBrush"  Color="#05050E"/>
+    <SolidColorBrush x:Key="SurfaceBrush"     Color="#0A0A18"/>
+    <SolidColorBrush x:Key="CardBrush"        Color="#0D0D1A"/>
+    <SolidColorBrush x:Key="Card2Brush"       Color="#12121E"/>
+    <SolidColorBrush x:Key="NavBrush"         Color="#030308"/>
+    <SolidColorBrush x:Key="BorderBrush"      Color="#16162A"/>
+    <SolidColorBrush x:Key="BorderLightBrush" Color="#22223A"/>
+
+    <!-- ═══ Акценты ═══ -->
+    <SolidColorBrush x:Key="AccentBrush"      Color="#7C5CBF"/>
+    <SolidColorBrush x:Key="AccentLightBrush" Color="#9B7FE8"/>
+    <SolidColorBrush x:Key="Accent2Brush"     Color="#5B8FE8"/>
+    <SolidColorBrush x:Key="PinkBrush"        Color="#E8609A"/>
+    <SolidColorBrush x:Key="CyanBrush"        Color="#4ECDC4"/>
+
+    <!-- ═══ Текст ═══ -->
+    <SolidColorBrush x:Key="TextBrush"        Color="#F0F0FF"/>
+    <SolidColorBrush x:Key="TextSecBrush"     Color="#8888AA"/>
+    <SolidColorBrush x:Key="TextMutedBrush"   Color="#44445A"/>
+
+    <!-- ═══ Статусы ═══ -->
+    <SolidColorBrush x:Key="SuccessBrush"     Color="#4ADE80"/>
+    <SolidColorBrush x:Key="WarningBrush"     Color="#FBBF24"/>
+    <SolidColorBrush x:Key="ErrorBrush"       Color="#F87171"/>
+
+    <!-- ═══ Liquid Glass цвета ═══ -->
+    <SolidColorBrush x:Key="GlassBrush"          Color="#FFFFFF" Opacity="0.04"/>
+    <SolidColorBrush x:Key="GlassBorderBrush"    Color="#FFFFFF" Opacity="0.12"/>
+    <SolidColorBrush x:Key="GlassHighlightBrush" Color="#FFFFFF" Opacity="0.18"/>
+    <SolidColorBrush x:Key="GlassDarkBrush"      Color="#000000" Opacity="0.35"/>
+
+    <!-- ═══ Градиенты ═══ -->
+    <LinearGradientBrush x:Key="AccentGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#7C5CBF" Offset="0"/>
+        <GradientStop Color="#5B8FE8" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="AccentGradientDiag" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#7C5CBF" Offset="0"/>
+        <GradientStop Color="#5B8FE8" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PlayGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#7C5CBF" Offset="0"/>
+        <GradientStop Color="#5B8FE8" Offset="0.6"/>
+        <GradientStop Color="#4ECDC4" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PinkGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#E8609A" Offset="0"/>
+        <GradientStop Color="#7C5CBF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#0E0E1C" Offset="0"/>
+        <GradientStop Color="#0A0A16" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="BgGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#05050E" Offset="0"/>
+        <GradientStop Color="#08081A" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SidebarGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#030308" Offset="0"/>
+        <GradientStop Color="#05050F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SidebarBorderGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#7C5CBF" Offset="0"/>
+        <GradientStop Color="#5B8FE8" Offset="0.4"/>
+        <GradientStop Color="#E8609A" Offset="0.8"/>
+        <GradientStop Color="#4ECDC4" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Liquid Glass градиент для карточек -->
+    <LinearGradientBrush x:Key="GlassCardGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#1AFFFFFF" Offset="0"/>
+        <GradientStop Color="#05FFFFFF" Offset="0.5"/>
+        <GradientStop Color="#10FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GlassCardBorderGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#30FFFFFF" Offset="0"/>
+        <GradientStop Color="#08FFFFFF" Offset="0.5"/>
+        <GradientStop Color="#20FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GlassShimmer" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#00FFFFFF" Offset="0"/>
+        <GradientStop Color="#15FFFFFF" Offset="0.5"/>
+        <GradientStop Color="#00FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Стили текста для диалогов -->
+    <Style x:Key="TitleStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#F0F0FF"/>
+        <Setter Property="FontSize"   Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="LabelStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#8888AA"/>
+        <Setter Property="FontSize"   Value="11"/>
+        <Setter Property="Margin"     Value="0,0,0,4"/>
+    </Style>
+
+    <!-- Стиль TextBox для диалогов -->
+    <Style x:Key="DarkTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background"      Value="#08081A"/>
+        <Setter Property="Foreground"      Value="#F0F0FF"/>
+        <Setter Property="CaretBrush"      Value="#7C5CBF"/>
+        <Setter Property="BorderBrush"     Value="#16162A"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding"         Value="10,8"/>
+        <Setter Property="FontSize"        Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="bd" CornerRadius="8"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#7C5CBF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ComboBox для диалогов -->
+    <Style x:Key="DarkComboStyle" TargetType="ComboBox">
+        <Setter Property="Background"      Value="#08081A"/>
+        <Setter Property="Foreground"      Value="#F0F0FF"/>
+        <Setter Property="BorderBrush"     Value="#16162A"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height"          Value="38"/>
+        <Setter Property="Padding"         Value="10,8"/>
+        <Setter Property="FontSize"        Value="13"/>
+    </Style>
+
+    <!-- Primary кнопка для диалогов -->
+    <Style x:Key="PrimaryBtnStyle" TargetType="Button">
+        <Setter Property="Foreground"          Value="White"/>
+        <Setter Property="BorderThickness"     Value="0"/>
+        <Setter Property="Padding"             Value="16,10"/>
+        <Setter Property="FontSize"            Value="13"/>
+        <Setter Property="FontWeight"          Value="SemiBold"/>
+        <Setter Property="Cursor"              Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="bd" CornerRadius="10"
+                            Padding="{TemplateBinding Padding}">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#7C5CBF" Offset="0"/>
+                                <GradientStop Color="#5B8FE8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="glow" Color="#7C5CBF"
+                                              BlurRadius="0" ShadowDepth="0" Opacity="0"/>
+                        </Border.Effect>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.75"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

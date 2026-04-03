@@ -1,0 +1,844 @@
+<!-- src/HuntLoader/Views/SplashWindow.xaml -->
+<Window x:Class="HuntLoader.Views.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        Width="900" Height="600"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <!-- Кольца -->
+                    <DoubleAnimation Storyboard.TargetName="Ring1Rot"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="360" Duration="0:0:10"
+                                     RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="Ring2Rot"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="360" To="0" Duration="0:0:7"
+                                     RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="Ring3Rot"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="360" Duration="0:0:15"
+                                     RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="Ring4Rot"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="360" To="0" Duration="0:0:22"
+                                     RepeatBehavior="Forever"/>
+
+                    <!-- Пульсация лого -->
+                    <DoubleAnimation Storyboard.TargetName="LogoSc"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.93" To="1.07" Duration="0:0:2.5"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="LogoSc"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.93" To="1.07" Duration="0:0:2.5"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+
+                    <!-- Свечение лого -->
+                    <DoubleAnimation Storyboard.TargetName="LogoGlow"
+                                     Storyboard.TargetProperty="BlurRadius"
+                                     From="20" To="60" Duration="0:0:2.5"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="LogoGlow"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.5" To="1.0" Duration="0:0:2.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+
+                    <!-- Внешнее свечение -->
+                    <DoubleAnimation Storyboard.TargetName="OuterBlur"
+                                     Storyboard.TargetProperty="Radius"
+                                     From="35" To="85" Duration="0:0:3"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+
+                    <!-- Орбы фона -->
+                    <DoubleAnimation Storyboard.TargetName="Orb1T"
+                                     Storyboard.TargetProperty="X"
+                                     From="0" To="130" Duration="0:0:8"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Orb1T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="80" Duration="0:0:6"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Orb1"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.05" To="0.15" Duration="0:0:5"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+
+                    <DoubleAnimation Storyboard.TargetName="Orb2T"
+                                     Storyboard.TargetProperty="X"
+                                     From="0" To="-110" Duration="0:0:10"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Orb2T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-70" Duration="0:0:7"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Orb2"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.04" To="0.12" Duration="0:0:7"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+
+                    <DoubleAnimation Storyboard.TargetName="Orb3T"
+                                     Storyboard.TargetProperty="X"
+                                     From="0" To="-80" Duration="0:0:11"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Orb3T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="100" Duration="0:0:9"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Orb3"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.03" To="0.09" Duration="0:0:6"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+
+                    <!-- Частицы -->
+                    <DoubleAnimation Storyboard.TargetName="sp1T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-45" Duration="0:0:3"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="sp1"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.2" To="0.9" Duration="0:0:2"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="sp2T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-35" Duration="0:0:4"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="sp2"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.15" To="0.8" Duration="0:0:2.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="sp3T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-40" Duration="0:0:2.5"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="sp3"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.2" To="1.0" Duration="0:0:1.8"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="sp4T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-50" Duration="0:0:3.5"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="sp4"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.1" To="0.7" Duration="0:0:3"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="sp5T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-30" Duration="0:0:2"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="sp5"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.15" To="0.8" Duration="0:0:1.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+                    <DoubleAnimation Storyboard.TargetName="sp6T"
+                                     Storyboard.TargetProperty="Y"
+                                     From="0" To="-55" Duration="0:0:4.5"
+                                     AutoReverse="True" RepeatBehavior="Forever">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="sp6"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.1" To="0.6" Duration="0:0:3.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"/>
+
+                    <!-- Появление UI -->
+                    <DoubleAnimation Storyboard.TargetName="LogoBox"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.9"
+                                     BeginTime="0:0:0.1">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="LogoBoxSc"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.5" To="1" Duration="0:0:0.9"
+                                     BeginTime="0:0:0.1">
+                        <DoubleAnimation.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="LogoBoxSc"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.5" To="1" Duration="0:0:0.9"
+                                     BeginTime="0:0:0.1">
+                        <DoubleAnimation.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+
+                    <DoubleAnimation Storyboard.TargetName="TitleRow"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.7"
+                                     BeginTime="0:0:0.5">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="TitleRow"
+                                        Storyboard.TargetProperty="Margin"
+                                        From="0,30,0,0" To="0,0,0,0"
+                                        Duration="0:0:0.7" BeginTime="0:0:0.5">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+
+                    <DoubleAnimation Storyboard.TargetName="SubTitle"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.6"
+                                     BeginTime="0:0:0.8">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+
+                    <DoubleAnimation Storyboard.TargetName="Divider"
+                                     Storyboard.TargetProperty="Width"
+                                     From="0" To="300" Duration="0:0:1"
+                                     BeginTime="0:0:0.6">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="Divider"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0" To="0.6" Duration="0:0:0.6"
+                                     BeginTime="0:0:0.6"/>
+
+                    <DoubleAnimation Storyboard.TargetName="ProgPanel"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.6"
+                                     BeginTime="0:0:1.0">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="ProgPanel"
+                                        Storyboard.TargetProperty="Margin"
+                                        From="0,20,0,0" To="0,0,0,0"
+                                        Duration="0:0:0.6" BeginTime="0:0:1.0">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+
+                    <DoubleAnimation Storyboard.TargetName="BotBar"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.5"
+                                     BeginTime="0:0:1.2"/>
+
+                    <!-- Точки -->
+                    <DoubleAnimation Storyboard.TargetName="dot1"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.15" To="1" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0"/>
+                    <DoubleAnimation Storyboard.TargetName="dot1Sc"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="1" To="1.6" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0"/>
+                    <DoubleAnimation Storyboard.TargetName="dot1Sc"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="1" To="1.6" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0"/>
+                    <DoubleAnimation Storyboard.TargetName="dot2"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.15" To="1" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0.17"/>
+                    <DoubleAnimation Storyboard.TargetName="dot2Sc"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="1" To="1.6" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0.17"/>
+                    <DoubleAnimation Storyboard.TargetName="dot2Sc"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="1" To="1.6" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0.17"/>
+                    <DoubleAnimation Storyboard.TargetName="dot3"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.15" To="1" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0.34"/>
+                    <DoubleAnimation Storyboard.TargetName="dot3Sc"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="1" To="1.6" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0.34"/>
+                    <DoubleAnimation Storyboard.TargetName="dot3Sc"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="1" To="1.6" Duration="0:0:0.5"
+                                     AutoReverse="True" RepeatBehavior="Forever"
+                                     BeginTime="0:0:0.34"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border CornerRadius="20" ClipToBounds="True">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#07070F" Offset="0"/>
+                <GradientStop Color="#0D0D22" Offset="0.5"/>
+                <GradientStop Color="#090914" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <!-- Орбы фона -->
+            <Canvas IsHitTestVisible="False" ClipToBounds="True">
+                <Ellipse x:Name="Orb1" Width="700" Height="700"
+                         Canvas.Left="-250" Canvas.Top="-300"
+                         Opacity="0.07">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#8B6FD4" Offset="0"/>
+                            <GradientStop Color="#5B3FA4" Offset="0.5"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="Orb1T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="Orb2" Width="600" Height="600"
+                         Canvas.Right="-200" Canvas.Bottom="-200"
+                         Opacity="0.05">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#6B9FFF" Offset="0"/>
+                            <GradientStop Color="#3B6FDF" Offset="0.5"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="Orb2T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="Orb3" Width="450" Height="450"
+                         Canvas.Left="350" Canvas.Top="100"
+                         Opacity="0.04">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF6B9D" Offset="0"/>
+                            <GradientStop Color="#CF3B6D" Offset="0.5"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="Orb3T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+
+                <!-- Частицы -->
+                <Ellipse x:Name="sp1" Width="7" Height="7"
+                         Canvas.Left="150" Canvas.Top="100" Opacity="0.4">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#8B6FD4" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="sp1T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="sp2" Width="5" Height="5"
+                         Canvas.Left="700" Canvas.Top="260" Opacity="0.3">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#6B9FFF" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="sp2T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="sp3" Width="6" Height="6"
+                         Canvas.Left="450" Canvas.Top="480" Opacity="0.35">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF6B9D" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="sp3T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="sp4" Width="4" Height="4"
+                         Canvas.Left="850" Canvas.Top="140" Opacity="0.25">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#8B6FD4" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="sp4T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="sp5" Width="5" Height="5"
+                         Canvas.Left="80" Canvas.Top="380" Opacity="0.3">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#6B9FFF" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="sp5T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="sp6" Width="8" Height="8"
+                         Canvas.Left="780" Canvas.Top="430" Opacity="0.2">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF6B9D" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="sp6T"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+            </Canvas>
+
+            <!-- Центральный блок -->
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+                <!-- ЛОГО -->
+                <Grid x:Name="LogoBox"
+                      HorizontalAlignment="Center"
+                      Width="170" Height="170"
+                      Margin="0,0,0,38"
+                      Opacity="0">
+                    <Grid.RenderTransform>
+                        <ScaleTransform x:Name="LogoBoxSc"
+                                        CenterX="85" CenterY="85"/>
+                    </Grid.RenderTransform>
+
+                    <!-- Внешний гло -->
+                    <Ellipse Width="170" Height="170"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Opacity="0.18">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#8B6FD4" Offset="0"/>
+                                <GradientStop Color="Transparent" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                        <Ellipse.Effect>
+                            <BlurEffect x:Name="OuterBlur" Radius="40"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+
+                    <!-- Кольцо 4 -->
+                    <Ellipse Width="168" Height="168"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             StrokeThickness="1" Opacity="0.10">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#8B6FD4" Offset="0"/>
+                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                <GradientStop Color="#6B9FFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:Name="Ring4Rot"
+                                             CenterX="84" CenterY="84"/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- Кольцо 3 -->
+                    <Ellipse Width="146" Height="146"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             StrokeThickness="1" Opacity="0.18">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="Transparent" Offset="0"/>
+                                <GradientStop Color="#FF6B9D" Offset="0.5"/>
+                                <GradientStop Color="Transparent" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:Name="Ring3Rot"
+                                             CenterX="73" CenterY="73"/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- Кольцо 2 -->
+                    <Ellipse Width="124" Height="124"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             StrokeThickness="1.5" Opacity="0.35">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#6B9FFF" Offset="0"/>
+                                <GradientStop Color="#8B6FD4" Offset="0.5"/>
+                                <GradientStop Color="#FF6B9D" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:Name="Ring2Rot"
+                                             CenterX="62" CenterY="62"/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- Кольцо 1 -->
+                    <Ellipse Width="102" Height="102"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             StrokeThickness="2" Opacity="0.55">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#8B6FD4" Offset="0"/>
+                                <GradientStop Color="#6B9FFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:Name="Ring1Rot"
+                                             CenterX="51" CenterY="51"/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- Сам логотип -->
+                    <Border Width="88" Height="88"
+                            CornerRadius="22"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#1C1045" Offset="0"/>
+                                <GradientStop Color="#0E0828" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#8B6FD4" Offset="0"/>
+                                <GradientStop Color="#6B9FFF" Offset="0.5"/>
+                                <GradientStop Color="#FF6B9D" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Border.BorderThickness>
+                            <Thickness>1.5</Thickness>
+                        </Border.BorderThickness>
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="LogoGlow"
+                                              Color="#8B6FD4"
+                                              BlurRadius="30"
+                                              ShadowDepth="0"
+                                              Opacity="0.8"/>
+                        </Border.Effect>
+                        <Border.RenderTransform>
+                            <ScaleTransform x:Name="LogoSc"
+                                            CenterX="44" CenterY="44"/>
+                        </Border.RenderTransform>
+
+                        <TextBlock Text="TH"
+                                   FontSize="36" FontWeight="Black"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#D0AAFF" Offset="0"/>
+                                    <GradientStop Color="#8B6FD4" Offset="0.5"/>
+                                    <GradientStop Color="#6B9FFF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="#8B6FD4"
+                                                  BlurRadius="14"
+                                                  ShadowDepth="0"
+                                                  Opacity="1"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+                <!-- Заголовок -->
+                <StackPanel x:Name="TitleRow"
+                            HorizontalAlignment="Center"
+                            Opacity="0">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="HUNT"
+                                   FontSize="50" FontWeight="Black"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#D0AAFF" Offset="0"/>
+                                    <GradientStop Color="#8B6FD4" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="#8B6FD4"
+                                                  BlurRadius="18"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.9"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock Text=" PROJECT"
+                                   FontSize="50" FontWeight="Black"
+                                   Foreground="#E8E8FF"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- ← ВЕРСИЯ 2.0.0 ЗДЕСЬ -->
+                    <TextBlock x:Name="SubTitle"
+                               Text="Hunt Loader  •  v2.0.0"
+                               FontSize="13"
+                               Foreground="#44446A"
+                               HorizontalAlignment="Center"
+                               Opacity="0"
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+
+                <!-- Разделитель -->
+                <Border x:Name="Divider"
+                        Height="1" Width="0"
+                        Margin="0,24,0,24"
+                        HorizontalAlignment="Center"
+                        Opacity="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="Transparent" Offset="0"/>
+                            <GradientStop Color="#8B6FD4" Offset="0.35"/>
+                            <GradientStop Color="#6B9FFF" Offset="0.65"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <!-- Прогресс -->
+                <StackPanel x:Name="ProgPanel" Width="400" Opacity="0">
+
+                    <TextBlock x:Name="StatusLbl"
+                               Text="Инициализация..."
+                               Foreground="#9090BB" FontSize="13"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,14"/>
+
+                    <Border CornerRadius="6" Height="6"
+                            Background="#10102A"
+                            Margin="0,0,0,10">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#000000"
+                                              BlurRadius="6"
+                                              ShadowDepth="0"
+                                              Opacity="0.7"/>
+                        </Border.Effect>
+                        <Border x:Name="ProgFill"
+                                CornerRadius="6"
+                                HorizontalAlignment="Left"
+                                Width="0" Height="6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#8B6FD4" Offset="0"/>
+                                    <GradientStop Color="#6B9FFF" Offset="0.5"/>
+                                    <GradientStop Color="#FF6B9D" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect Color="#8B6FD4"
+                                                  BlurRadius="14"
+                                                  ShadowDepth="0"
+                                                  Opacity="1"/>
+                            </Border.Effect>
+                        </Border>
+                    </Border>
+
+                    <Grid>
+                        <TextBlock x:Name="PctLbl"
+                                   Text="0%"
+                                   Foreground="#444466" FontSize="11"
+                                   HorizontalAlignment="Left"/>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Ellipse x:Name="dot1"
+                                     Width="8" Height="8"
+                                     Margin="5,0" Opacity="0.15"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#8B6FD4" Offset="0"/>
+                                        <GradientStop Color="#6040A0" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#8B6FD4"
+                                                      BlurRadius="8"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.9"/>
+                                </Ellipse.Effect>
+                                <Ellipse.RenderTransform>
+                                    <ScaleTransform x:Name="dot1Sc"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="dot2"
+                                     Width="8" Height="8"
+                                     Margin="5,0" Opacity="0.15"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#6B9FFF" Offset="0"/>
+                                        <GradientStop Color="#3B6FDF" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#6B9FFF"
+                                                      BlurRadius="8"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.9"/>
+                                </Ellipse.Effect>
+                                <Ellipse.RenderTransform>
+                                    <ScaleTransform x:Name="dot2Sc"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="dot3"
+                                     Width="8" Height="8"
+                                     Margin="5,0" Opacity="0.15"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FF6B9D" Offset="0"/>
+                                        <GradientStop Color="#CF3B6D" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#FF6B9D"
+                                                      BlurRadius="8"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.9"/>
+                                </Ellipse.Effect>
+                                <Ellipse.RenderTransform>
+                                    <ScaleTransform x:Name="dot3Sc"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                        </StackPanel>
+
+                        <TextBlock x:Name="StepLbl"
+                                   Text="1/5"
+                                   Foreground="#444466" FontSize="11"
+                                   HorizontalAlignment="Right"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Нижняя строка -->
+            <Border x:Name="BotBar"
+                    VerticalAlignment="Bottom"
+                    Padding="28,14"
+                    Opacity="0">
+                <Grid>
+                    <!-- ← ГОД 2025 -->
+                    <TextBlock Text="© TH Project 2025"
+                               Foreground="#1E1E38"
+                               FontSize="11"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Ellipse Width="5" Height="5"
+                                 Fill="#8B6FD4"
+                                 Margin="0,0,6,0"
+                                 VerticalAlignment="Center">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Color="#8B6FD4"
+                                                  BlurRadius="8"
+                                                  ShadowDepth="0"
+                                                  Opacity="1"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <TextBlock Text="Hunt Loader v2.0.0"
+                                   Foreground="#1E1E38"
+                                   FontSize="11"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
